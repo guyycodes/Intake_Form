@@ -1,10 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { 
-  TextField, Button, Stepper, Step, StepLabel, FormControl, 
-  InputLabel, Select, MenuItem, FormControlLabel, Checkbox,
-  Typography, Box, FormHelperText, useTheme, useMediaQuery
+import {
+    Box,
+    Button,
+    Checkbox,
+    FormControl,
+    FormControlLabel,
+    FormHelperText,
+    MenuItem,
+    Select,
+    Step, StepLabel,
+    Stepper,
+    TextField,
+    Typography,
+    useMediaQuery,
+    useTheme
 } from '@mui/material';
-import { formQuestions } from '../../../../../../../assets/templates/formQuestions';
+import React, { useEffect, useState } from 'react';
+import { formQuestions } from '../../../../../assets/templates/formQuestions';
 
 export const RegistrationForm = ({ onFormDataChange, closeAccordion }) => {
   const [activeStep, setActiveStep] = useState(0);

@@ -1,44 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
-  Container,
-  Typography,
-  Paper,
-  Box,
-  Stepper,
-  Step,
-  StepLabel,
-  useMediaQuery,
-  useTheme,
-  Button,
   Accordion,
-  AccordionSummary,
   AccordionDetails,
+  AccordionSummary,
+  Alert,
+  Backdrop,
+  Box,
+  Button,
   Checkbox,
-  FormGroup,
-  FormControlLabel,
+  CircularProgress,
   FormControl,
+  FormControlLabel,
+  FormGroup,
   FormLabel,
   Grid,
-  TextField,
   List,
   ListItem,
   ListItemText,
-  Alert,
+  Modal,
   Snackbar,
-  CircularProgress,
-  Backdrop,
-  Modal
+  Step,
+  StepLabel,
+  Stepper,
+  TextField,
+  Typography,
+  useMediaQuery,
+  useTheme
 } from '@mui/material';
-import { CheckCircle, XCircle } from 'lucide-react';
-import confetti from 'canvas-confetti';
 import MuiAlert from '@mui/material/Alert';
-import styled from "styled-components";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { CampRegistrationAccordion } from '../../sections/HeroSection/HeroSubSections/SignUpForm/index';
-import { termsAndConditions } from '../../../../assets/templates/terms';
-import { campInfo } from '../../../../assets/templates/camps'
-import { DataSync } from '../../../../util/MinIO/ObjectStorage';
+import confetti from 'canvas-confetti';
 import { openDB } from 'idb';
+import { CheckCircle, XCircle } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import styled from "styled-components";
+import { campInfo } from '../../../../assets/templates/camps';
+import { termsAndConditions } from '../../../../assets/templates/terms';
+import { DataSync } from '../../../../util/MinIO/ObjectStorage';
+import { CampRegistrationAccordion } from '../HeroSubSections/index';
 
 export const DB_NAME = 'STJDA_SignUp';
 export const USER_STORE = 'userSignUps';
@@ -78,10 +76,6 @@ export const CampRegistrationPage = () => {
     consent: false,
     registrationFormData: {}
   });
-
-  useEffect(() => {
-    console.log('allFormData:', allFormData);
-  }, [allFormData]);
 
 
   const handleNext = () => {
@@ -202,7 +196,8 @@ export const CampRegistrationPage = () => {
         display: "flex",
         flexDirection: 'column',
         padding: "0px 10px",
-        width: "100%"
+        width: "100%",
+        backgroundColor: 'orange'
       }}>
         <Box sx={{
           padding: "10px",
@@ -214,7 +209,7 @@ export const CampRegistrationPage = () => {
         </Box>
       </Box>
 
-      <Box sx={{ backgroundColor: '#ffffff', p: 3, borderRadius: 2 }}>
+      <Box sx={{ backgroundColor: 'pink', p: 3, borderRadius: 2 }}>
         <Stepper 
           activeStep={activeStep} 
           sx={{ mb: 4 }}
@@ -227,7 +222,7 @@ export const CampRegistrationPage = () => {
             </Step>
           ))}
         </Stepper>
-
+        <Box sx={{ backgroundColor: 'green', p: 3, borderRadius: 2 }}>
         {activeStep === steps.length ? (
           <Box>
             <Typography sx={{ mt: 2, mb: 1 }}>
@@ -239,7 +234,7 @@ export const CampRegistrationPage = () => {
             </Box>
           </Box>
         ) : (
-          <Box>
+          <Box sx={{ backgroundColor: 'yellow', borderRadius: 2 }}>
            {activeStep === 0 && (
               <Box>
                 <Typography variant="h6" gutterBottom>
@@ -249,7 +244,7 @@ export const CampRegistrationPage = () => {
                   expanded={isAccordionOpen} 
                   onChange={handleAccordionChange}
                 >
-                  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <AccordionSummary sx={{backgroundColor: 'red'}} expandIcon={<ExpandMoreIcon />}>
                     <Typography>Personal Information</Typography>
                   </AccordionSummary>
                   <AccordionDetails>
@@ -426,6 +421,7 @@ export const CampRegistrationPage = () => {
             </Box>
           </Box>
         )}
+        </Box>
           </Box>
 
 
@@ -500,70 +496,3 @@ export const CampRegistrationPage = () => {
     </>
   );
 };
-
-const StyledItemsWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-
-  .card {
-    flex: 1 1 calc(50% - 10px);
-    min-width: 300px;
-    box-shadow: 0px 4px 4px #00000040;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .photo {
-    background-position: 50% 50%;
-    background-size: cover;
-    height: 60%;
-    width: 100%;
-  }
-
-  .science-camp {
-    background-image: url(https://c.animaapp.com/I4tqUSkw/img/photo-6@2x.png);
-  }
-
-  .nature-camp {
-    background-image: url(https://c.animaapp.com/I4tqUSkw/img/photo-7@2x.png);
-  }
-
-    .residential-camp {
-    background-image: url(https://c.animaapp.com/I4tqUSkw/img/photo-4@2x.png) !important;
-  }
-
-  .robotics-camp {
-    background-image: url(https://c.animaapp.com/I4tqUSkw/img/photo-5@2x.png) !important;
-  }
-
-  .button {
-    background-color: var(--blue);
-    padding: 8px 24px;
-    margin-top: auto;
-    align-self: flex-start;
-    margin-left: 10px
-  }
-
-  @media (max-width:1000px) {
-    .card {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-
-  @media (max-width: 780px) {
-    flex-direction: column;
-    .card {
-      flex: 1 1 100%;
-    }
-  }
-`;

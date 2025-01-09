@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document outlines the architecture of a smaller, specialized service designed to integrate with a custom intake form hosted on GitHub Pages. This service manages form submissions and associated data storage, ensuring HIPAA compliance and data integrity. And is a MicroServie to the primary STJDA Web app.
+This document outlines the architecture of a smaller, specialized service designed to integrate with a custom intake form hosted on GitHub Pages. This service manages form submissions and associated data storage, ensuring HIPAA compliance and data integrity. And is a MicroServie to the primary STJDA Web app lcated here https://github.com/stjda/Summer_Camp_Manager.
 
 ## Technologies Used
 
