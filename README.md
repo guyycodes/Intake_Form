@@ -10,7 +10,7 @@ This document outlines the architecture of a smaller, specialized service design
 - **Backend**: Node.js with Express framework, ensuring efficient handling of API requests and server-side logic.
 - **Encryption and Security**: ZeroSSL for HTTPS encryption on web communication, ensuring secure data transfer.
 - **Data Storage**: Minio object storage for handling form uploads and data storage, encrypted to ensure HIPAA compliance.
-- **Server Configuration**: An automated setup running on an overlay network consisting of 3 servers - 2 HTTPS and 1 HTTP - to manage the secure flow and processing of data.
+- **Server Configuration**: An automated setup running on an bridge network consisting of 3 servers - 2 HTTPS and 1 HTTP - to manage the secure flow and processing of data.
 - **SMTP through fastmail guymorganb@levelupco.com** For automated server messaging to ensure server health, the server in both services email the project owner every 12 hours of its status, ensuring the overseerer is able to know if any issues arise.
 
 ## Components and Configuration
