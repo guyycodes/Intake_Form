@@ -51,7 +51,7 @@ export const openSTJDADB = async () => {
   });
 };
 
-const steps = ['Personal Information', 'Camp Selection', 'Review & Submit'];
+const steps = ['Camp Selection', 'Personal Information ', 'Review & Submit'];
 
 export const CampRegistrationPage = () => {
 
@@ -197,24 +197,30 @@ export const CampRegistrationPage = () => {
         flexDirection: 'column',
         padding: "0px 10px",
         width: "100%",
-        backgroundColor: 'orange'
+        // backgroundColor: 'orange'
       }}>
         <Box sx={{
           padding: "10px",
           width: "100%"
         }}>
-          <Typography variant="h4" component="h1" gutterBottom align="center">
-            STJDA Summer Camp Registration
+          <Typography color={'#179636'} variant="h4" component="h1" gutterBottom align="center">
+            STJDA CAMP FREEDOM REGISTRATION
           </Typography>
         </Box>
       </Box>
 
-      <Box sx={{ backgroundColor: 'pink', p: 3, borderRadius: 2 }}>
+      <Box sx={{p: 3, borderRadius: 2 }}>
         <Stepper 
           activeStep={activeStep} 
-          sx={{ mb: 4 }}
           orientation={isMobile ? "vertical" : "horizontal"}
           alternativeLabel={!isMobile}
+          sx={{ 
+            mb: 4,
+            '& .MuiStepIcon-root': {        // This targets the default state
+              color: 'green',           // Inactive step color
+            },
+          }}
+      
         >
           {steps.map((label) => (
             <Step key={label}>
@@ -222,7 +228,12 @@ export const CampRegistrationPage = () => {
             </Step>
           ))}
         </Stepper>
-        <Box sx={{ backgroundColor: 'green', p: 3, borderRadius: 2 }}>
+        <Box sx={{ p: 2, borderRadius: 2 }}>
+          <>
+            <Typography color={'red'}>
+            !!BEFORE STARTING THIS APPLICATION!!
+            </Typography>
+          </>
         {activeStep === steps.length ? (
           <Box>
             <Typography sx={{ mt: 2, mb: 1 }}>
@@ -234,18 +245,27 @@ export const CampRegistrationPage = () => {
             </Box>
           </Box>
         ) : (
-          <Box sx={{ backgroundColor: 'yellow', borderRadius: 2 }}>
+          <Box sx={{ borderRadius: 2 }}>
            {activeStep === 0 && (
               <Box>
                 <Typography variant="h6" gutterBottom>
-                  Please fill out your personal information.
+                Make sure you have all of your information:
+                * Guardian contact name(s), number(s), email(s), address(es), and occupation/employer
+                * Alternate contact name & number
+                * Camper's food allergies, if any
+                * Endocrinologist and pediatrician contact name(s), number(s), address(es)
+                * Insurance information with insurance cards, prescription cards if any. (Front and back sides REQUIRED, email to camp@stjda.org)
+                * Immunization Record with dates of vaccines (REQUIRED, email to camp@stjda.org)
+
+                Please make sure you have plenty of time to complete the entire application. You will not be able to save your incomplete work and finish later. We estimate the application will take 15-20 minutes if you have all of your documentation and information on hand before beginning.
+
                 </Typography>
                 <Accordion 
                   expanded={isAccordionOpen} 
                   onChange={handleAccordionChange}
                 >
-                  <AccordionSummary sx={{backgroundColor: 'red'}} expandIcon={<ExpandMoreIcon />}>
-                    <Typography>Personal Information</Typography>
+                  <AccordionSummary  expandIcon={<ExpandMoreIcon />}>
+                    <Typography color={'#179636'} >Personal Information</Typography>
                   </AccordionSummary>
                   <AccordionDetails>
                     <CampRegistrationAccordion 

@@ -143,11 +143,11 @@ export const RegistrationForm = ({ onFormDataChange, closeAccordion }) => {
       width: '100%', 
       maxWidth: isMobile ? '100%' : 600, 
       margin: 'auto', 
-      padding: isMobile ? 1 : 2 
+      padding: isMobile ? 1 : 2,
     }}>
-      <Typography variant={isMobile ? "h5" : "h4"} align="center" gutterBottom>
-        Register Here
-      </Typography>
+      {/* <Typography variant={isMobile ? "h5" : "h4"} align="center" gutterBottom>
+        
+      </Typography> */}
       <Stepper 
         activeStep={activeStep} 
         orientation={isMobile ? "vertical" : "horizontal"}

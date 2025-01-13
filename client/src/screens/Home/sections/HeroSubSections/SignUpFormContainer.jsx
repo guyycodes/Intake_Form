@@ -17,8 +17,8 @@ export const CampRegistrationAccordion = ({ onFormDataChange }) => {
   // Array of camp objects, each containing name, description, and component
   const camps = [
     {
-      name: "Register Here",
-      description: toggleAccordian ? "A camp for young freedom fighters" : "Select Next to Contine >>",
+      name: "",
+      description: toggleAccordian ? "" : "Select Next to Contine >>",
       component: RegistrationForm
     },
     // Add more camps here as needed
@@ -37,10 +37,27 @@ export const CampRegistrationAccordion = ({ onFormDataChange }) => {
   };
 
   return (
-    <Box sx={{ width: '100%', maxWidth: 800, margin: 'auto', padding: 2 }}>
-      <Typography variant="h4" align="center" gutterBottom>
+    <Box 
+      sx={{ 
+        width: '100%', 
+        maxWidth: 'auto', 
+        margin: 'auto', 
+        padding: 2,
+        backgroundImage: 'url("https://u-static.fotor.com/images/text-to-image/result/PRO-f53d1d590d5e46b49d733ad1b86c4440.jpg")',  // Replace with your image URL
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        minHeight: '100vh',  // This ensures the background covers the full viewport height
+        '& .MuiAccordion-root': {  // This adds some transparency to the accordion
+          backgroundColor: 'rgba(255, 255, 255, .95)'
+        },
+        border: '1px solid black',  // Added semi-transparent white border
+        borderRadius: '16px',
+      }}
+    >
+      {/* <Typography variant="h4" align="center" gutterBottom>
         Camp Registration
-      </Typography>
+      </Typography> */}
       {camps.map((camp, index) => {
         const CampComponent = camp.component;
         return (
